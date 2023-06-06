@@ -2,9 +2,12 @@
 
 
 describe("The test Contact us form via webdriveruniversity.com", () => {
-    it("Should be able to a succesfull vsubmission via Contact us form ", () => {
+    it.only("Should be able to a succesfull vsubmission via Contact us form ", () => {
         cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html');
        // cy.get('#contact-us').click({force: true}) 
+       cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
+       cy.title().should('include', 'WebDriver | Contact Us');
+       cy.url().should('include', 'contactus');
        cy.get('.section_header').should('have.text', 'CONTACT US');
        cy.get('[name="first_name"]').type('Kristina');
        cy.get('[name="first_name"]').should('have.value', 'Kristina');
