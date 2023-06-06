@@ -6,7 +6,9 @@ describe("The test Contact us form via Automation test Store", () => {
     it("Should be able to a succesfull vsubmission via Contact us form ", () => {
         cy.visit("https://automationteststore.com/");
        // cy.get('.info_links_footer > :nth-child(5) > a').click();
-       cy.xpath("//a[contains (@href, 'contact' )]").click();
+       cy.xpath("//a[contains (@href, 'contact' )]").click().then(function(linkText){
+        cy.log("Clicked on link using text: " + linkText.text());
+       })
         cy.get('#ContactUsFrm_first_name').type('Kristina');
         cy.get('#ContactUsFrm_email').type('hhd@efe.fefe');
         cy.get('#ContactUsFrm_email').should('have.attr', 'name', 'email');
