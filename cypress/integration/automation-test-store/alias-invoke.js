@@ -14,9 +14,25 @@ describe("Alias and Invoke", () => {
         //validate the name 
     
     });
-
+// 
+    // it("Challenge Alias and Invoke", () => {
+        // cy.visit("https://automationteststore.com/");
+        // cy.get(".thumbnail").invoke('val').as('amount')
+        // cy.get('@amount').its('length').should('be.an', 16)
+// 
+        // Validate title for UI icon
+        // cy.get('.productcart').invoke('text').as('icon')
+        // cy.get('@icon').should('include', 'Add to Cart')
+    // });
+// 
+    //Answer
     it("Challenge Alias and Invoke", () => {
         cy.visit("https://automationteststore.com/");
-        cy.get(".thumbnail").invoke('text').as('productThumbnail')
-    })
+        cy.get('.thumbnail').as('productThumbnail');
+        cy.get('@productThumbnail').should('have.length', 16);
+        //Validate title for UI icon
+        // cy.get('.productcart').invoke('text').as('icon')
+        cy.get('@productThumbnail').find('.productcart').invoke('attr', 'title').should('include', 'Add to Cart');
+        // cy.get('@icon').should('include', 'Add to Cart')
+    });
 })

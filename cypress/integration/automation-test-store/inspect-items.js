@@ -17,7 +17,7 @@ describe("Inspect AutomationTest Store  items using chain of commands", () => {
         })
     }),
 
-    it("click on the third Item using index", () => {
+    it.only("click on the third Item using index", () => {
         cy.visit("https://automationteststore.com/");
         cy.get('.fixed_wrapper').find('.prdocutname').eq(2).click();
     })
