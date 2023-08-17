@@ -81,7 +81,7 @@ describe("Traversing DOM elements in Cypress", () => {
     // здесь результат это количество записей, которые находятся между овощами (они ниже) и фруктами (они вверху) используя команду, которая считает результаты над объектом до определенного объекта
   });
 
-  it.only("siblings() To get all sibling DOM elements of elements", () => {
+  it("siblings() To get all sibling DOM elements of elements", () => {
     cy.get('.traversal-button-other-states .active').siblings().should('have.length', 3)
     //siblings это смежные эелементы
   });
