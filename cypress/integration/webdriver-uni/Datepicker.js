@@ -1,6 +1,6 @@
 describe("Test Datepicker via webdriver", () => {
     it("Select Date from Datepicker", () => {
-    cy.visit("http://www.webdriveruniversity.com")
+    cy.visit("/")
     cy.get('#datepicker').invoke('removeAttr', 'target').click({force:true})
     cy.get('#datepicker').click();
 

@@ -4,6 +4,7 @@
 
 describe("The test Contact us form via Automation test Store", () => {
     before(function() {
+        //cy.viewport(550, 750) // set up the size of screen
         cy.fixture("userDetails").as("user")  //здесь идет отсылка к новому файлу из fixture
     })
     it("Should be able to a succesfull vsubmission via Contact us form ", () => {

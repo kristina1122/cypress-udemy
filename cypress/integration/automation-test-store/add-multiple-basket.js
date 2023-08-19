@@ -1,22 +1,27 @@
 /// <reference types="cypress"/>
+import Autostore_Homepage_Po from "../../support/pageObjects/automation-test-store/Autostore_Homepage_PO";
+import Autostore_HairCare_Po from "../../support/pageObjects/automation-test-store/Autostore_HaitCare_PO";
 
 
 describe("Add multiple items to basket", () => {
-before(function() {                               //здесь добавили список продуктов из fixture
-    cy.fixture("products").then(function(data) {
+    const autoStore_Homepage_PO = new Autostore_Homepage_Po();
+    const autoStore_HairCare_PO = new Autostore_HairCare_Po();
+
+before(function() {          
+    cy.clearAllLocalStorage();  
+    cy.clearAllCookies();            
+    cy.fixture("products").then(function(data) {//здесь добавили список продуктов из fixture
         globalThis.data = data
     })
 })
     beforeEach(function() {
-        cy.visit("https://automationteststore.com/");
-        cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
+        autoStore_Homepage_PO.accessHomepage();
+        autoStore_Homepage_PO.clickOn_HaieCare_Link();
     })
 
     it("Add specific items to basket", () => {
-        globalThis.data.productName.forEach(function(element){
-            cy.AddProductToBasket(element)
-        })
-        cy.get('.dropdown-toggle > .fa').click();
+
+        autoStore_HairCare_PO.addHairCareProductsToBasket();
 
     });
     });

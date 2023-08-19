@@ -19,9 +19,17 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+Cypress.Commands.add("navigateTo_WebdriverUni_Homepage", () => {
+cy.visit("/");
+});
+
+Cypress.Commands.add("navigateTo_WebdriverUni_Homepage", () => { //ведет на другую страницу с тем же base_url
+    cy.visit("/" + "/Contact-Us/contactus.html");
+    });
+
 Cypress.Commands.add("selectProduct", productName => {
     cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => { // - here we located all od the header textes
-        if($el.text().includes (productName)) {  // - here we iterate each one product name
+        if($el.text().includes(productName)) {  // - here we iterate each one product name
           cy.log($el.text())
           cy.get('.productcart').eq(index).click(); // click on basket btn (icon)
         }
@@ -29,10 +37,11 @@ Cypress.Commands.add("selectProduct", productName => {
 
 })
 
-Cypress.Commands.add("AddProductToBasket", productName => {
+Cypress.Commands.add("addProductToBasket", productName => {
     cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
         if($el.text() === productName) {
-           cy.wrap($el).click()
+           cy.log($el.text())
+           cy.get('.productcart').eq(index).click();
         }
        });
 
