@@ -6,7 +6,10 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: 'cypress/integration/*/*.js',
+    excludeSpecPattern: "cypress/integration/examples/*.js", //использутся чтобы не отображать папку при запуске сайпресс
     chromeWebSecurity: false,
-    experimentalSessionAndOrigin: true
+    experimentalSessionAndOrigin: true,
+    defaultCommandTimeout: 10000,
+    pageLoadTimeout: 120000
   },
 });

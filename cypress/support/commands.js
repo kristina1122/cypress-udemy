@@ -19,7 +19,34 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
+Cypress.Commands.add("selectProduct", productName => {
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => { // - here we located all od the header textes
+        if($el.text().includes (productName)) {  // - here we iterate each one product name
+          cy.log($el.text())
+          cy.get('.productcart').eq(index).click(); // click on basket btn (icon)
+        }
+       });
+
+})
+
+Cypress.Commands.add("AddProductToBasket", productName => {
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+        if($el.text() === productName) {
+           cy.wrap($el).click()
+        }
+       });
+
+})
+Cypress.Commands.add("webdriverUni_ContactForm_Submission",(firstName, lastName, email, comment, $selector, textToLocate  ) => {
+    cy.get('[name="first_name"]').type(firstName);
+    cy.get('[name="last_name"]').type(lastName);
+    cy.get('[name="email"]').type(email)
+    cy.get('textarea.feedback-input').type(comment)
+    cy.get('[type="submit"]').click();
+    cy.get($selector).contains(textToLocate)
+  
+})
+
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })

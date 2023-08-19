@@ -4,7 +4,7 @@
 
 describe("The test Contact us form via Automation test Store", () => {
     before(function() {
-        cy.fixture("userDetails").as("user")
+        cy.fixture("userDetails").as("user")  //здесь идет отсылка к новому файлу из fixture
     })
     it("Should be able to a succesfull vsubmission via Contact us form ", () => {
         cy.visit("https://automationteststore.com/");
@@ -12,7 +12,7 @@ describe("The test Contact us form via Automation test Store", () => {
        cy.xpath("//a[contains (@href, 'contact' )]").click().then(function(linkText){
         cy.log("Clicked on link using text: " + linkText.text());
        })
-       cy.get('@user').then((user)=> {
+       cy.get('@user').then((user)=> {        //здесь мы используем данные из файла fixture для заполнения полей
 
         cy.get('#ContactUsFrm_first_name').type(user.first_name);
         cy.get('#ContactUsFrm_email').type(user.email);
