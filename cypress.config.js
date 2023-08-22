@@ -5,7 +5,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern: 'cypress/integration/*/*.js',
+    //specPattern: 'cypress/integration/*/*.js',
+    specPattern: 'cypress/e2e/**/*.js', //to run tests for network requests
     excludeSpecPattern: "cypress/integration/examples/*.js", //использутся чтобы не отображать папку при запуске сайпресс
     baseUrl: "http://www.webdriveruniversity.com",
     chromeWebSecurity: false,
